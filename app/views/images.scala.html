@@ -1,0 +1,28 @@
+@import model.Image
+@(images: List[Image])
+@import views.html.helper._
+
+
+@main("List Image") {
+
+    @if(images.size() > 0) {
+
+        <table id="imagesTables" class="table table-striped table-condensed table-bordered">
+            <thead>
+                <th>Id</th>
+                <th>Image</th>
+        <thead>
+            <tbody>
+
+            @for(image <- images) {
+                <tr>
+                    <td>@image.getId()</td>
+                    <td><img src="@image.getDownload_url()" width="200" height="200"></td>
+
+                </tr>
+            }
+            </tbody>
+        </table>
+    }
+
+}

@@ -1,0 +1,48 @@
+@()
+
+@main("Disneyland Paris - Java Technical Test") {
+  <h1>Welcome!</h1>
+  <p>
+    This test is conceived to challenge you on some technical points, and also check how resourceful you can be.<br />
+    This is why you may find some implementations to be easily implemented, the main point being to let you figure how to conceive them as mush as possible.<br />
+    Also, the point is not to learn how Play Framework works in details, only to check how you can search for the right information online or in the existing code.<br />
+    Do as much as you can in the allocated time.
+  </p>
+  <p>You'll find the steps to follow below.</p>
+
+  <h2>1. Install & run</h2>
+  <p>Congratulations, you've already performed this task !</p>
+
+  <h2>2. Display a random image<a href="/test" title="View Result"> Result</a> </h2>
+  <p>
+    The point of this task is to implement a simple GET request to the following endpoint and display the image.<br />
+    https://picsum.photos/200/300<br />
+    (Doc at https://picsum.photos/)
+  </p>
+  <ul>
+    <li>You'll need to create a route pointing to the "test" method of HomeController. Let's say "/test".</li>
+    <li>We do not want to ask for a different image at every call. You'll need to implement some caching mechanism relying on Play Cache API to keep the same URL (do not bother with caching the actual file). Let's keep the same image for 5 seconds.</li>
+    <li>The URL of the endpoint, and the TTL should not be hardcoded, please put it in the configuration.</li>
+    <li>You'll have to render a view for this, passing it the URL of the image. Please use Twirl.</li>
+    <li>We will use WS and Play Cache (relying on ehcache), which are already injected in the controller mentioned above.</li>
+  </ul>
+
+  <h2>3. Display multiple images<a href="/testMultiple" title="View"> Result</a></h2>
+  <p>
+    The point of this task is to make another route that will display a list of images retrieved from the following API:<br />
+    https://picsum.photos/v2/list
+  </p>
+  <ul>
+    <li>You'll need to create a route pointing to a new method of HomeController. Let's say "/testMultiple".</li>
+    <li>We only want to display images for which the ID is a multiple 2.</li>
+    <li>We want to use only one view. Please update the one from before to handle both cases (tasks #2 and #3).</li>
+    <li>It would be great to have a proper deserialization mechanism (relying on Jackson for instance ?).</li>
+    <li>Consider the good practices mentioned for task #2.</li>
+  </ul>
+
+  <h2>4. Make it shine</h2>
+  <p>
+    Let's do some refactoring, and add a service to the mix.<br />
+    Create a RandomImageService to generate the URLs of tasks 2 & 3 to have clean controllers.
+  </p>
+}
